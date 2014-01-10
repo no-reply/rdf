@@ -287,7 +287,8 @@ module RDF
       end
 
       if empty?
-        @subject = new_subject = RDF::Node.new
+        @subject = RDF::Node.new if @subject == RDF.nil
+        new_subject = subject
       else
         old_subject, new_subject = last_subject, RDF::Node.new
         graph.delete([old_subject, RDF.rest, RDF.nil])
