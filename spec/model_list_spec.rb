@@ -121,6 +121,12 @@ describe RDF::List do
     it "returns a resource" do
       expect(empty.subject).to be_a_resource
     end
+
+    it "returns the resource passed as subject" do
+      resource = RDF::URI('http://example.org/blah')
+      list_with_subject = RDF::List.new(resource) << 'blah'
+      expect(list_with_subject.subject).to eq resource
+    end
   end
 
   describe "#graph" do
